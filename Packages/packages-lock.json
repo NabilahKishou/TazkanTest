@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.nabilahkishou.objectpool": {
+      "version": "https://github.com/NabilahKishou/Object-Pooling.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0980678211fab4425af8d674950c5478e564bddf"
+    },
     "com.unity.2d.animation": {
       "version": "5.2.6",
       "depth": 0,
