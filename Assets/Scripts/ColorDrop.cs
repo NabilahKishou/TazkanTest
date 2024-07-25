@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace NabilahKishou.TazkanTest
 {
     public class ColorDrop : MonoBehaviour
     {
+        [SerializeField] private float _timerToDrop = 3f;
+
         private SpriteRenderer _renderer;
         private Rigidbody2D _rb;
         private Collider2D _collider;
@@ -23,15 +26,21 @@ namespace NabilahKishou.TazkanTest
 
         private void DeactivateDroplet()
         {
-            _collider.isTrigger = false;
             _rb.gravityScale = 0;
+            _collider.isTrigger = false;
             ColorPooler.Return(this);
+        }
+
+        private IEnumerator ActivateGravity(float wait)
+        {
+            yield return new WaitForSeconds(wait);
+            _rb.gravityScale = 1;
         }
 
         public void ActivateDroplet()
         {
             _collider.isTrigger = true;
-            _rb.gravityScale = 1;
+            StartCoroutine(ActivateGravity(_timerToDrop));
         }
 
         public void ChangeColor(Color to)
