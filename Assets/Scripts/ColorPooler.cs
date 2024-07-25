@@ -26,7 +26,7 @@ namespace NabilahKishou.TazkanTest
             Destroy(obj);
         }
 
-        public static ColorDrop GetColor() => Instance.GetObject();
+        public static ColorDrop GetDroplet() => Instance.GetObject();
         public static void Return(ColorDrop color) => Instance.ReturnObject(color);
     }
 }

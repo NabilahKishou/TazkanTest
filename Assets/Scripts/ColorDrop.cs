@@ -11,6 +11,9 @@ namespace NabilahKishou.TazkanTest
         private SpriteRenderer _renderer;
         private Rigidbody2D _rb;
         private Collider2D _collider;
+        private Colorway _colorway;
+
+        public Colorway DropletColor => _colorway;
 
         private void Awake()
         {
@@ -38,8 +41,15 @@ namespace NabilahKishou.TazkanTest
             _rb.gravityScale = 1;
         }
 
+        private void RandomizeColor()
+        {
+            _colorway = (Colorway)Random.Range(0, _colors.EnumLength());
+            _renderer.color = _colors.GetColor(_colorway);
+        }
+
         public void ActivateDroplet()
         {
+            RandomizeColor();
             _collider.isTrigger = true;
             StartCoroutine(ActivateGravity(_timerToDrop));
         }

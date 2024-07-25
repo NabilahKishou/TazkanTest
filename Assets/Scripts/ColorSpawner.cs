@@ -14,7 +14,7 @@ namespace NabilahKishou.TazkanTest
 
         private void SpawnColor()
         {
-            var droplet = ColorPooler.GetColor();
+            var droplet = ColorPooler.GetDroplet();
             RandomizePosition(droplet.transform);
             droplet.ActivateDroplet();
         }

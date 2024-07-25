@@ -9,6 +9,7 @@ namespace NabilahKishou.TazkanTest
     {
         public List<Colored> _colorDirectory;
         public Color GetColor(Colorway way) => _colorDirectory.Find((c) => c.key == way).color;
+        public int EnumLength() => Enum.GetValues(typeof(Colorway)).Length;
     }
 
     [Serializable]
