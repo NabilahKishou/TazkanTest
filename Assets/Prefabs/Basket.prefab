@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97437765d2a575408f810fe1e964420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorPrefab: {fileID: 1304145222654258455, guid: 1f891b3f87b613c4696b4c6ead616a7e, type: 3}
+  _colorPrefab: {fileID: 9207310197948803615, guid: f1bff3c8ac095f74fb8cca2ae7ffdff3, type: 3}
   _stackCapacity: 7
   _bottomPoint: {fileID: 5067549436750984592}
 --- !u!212 &5067549437110997798

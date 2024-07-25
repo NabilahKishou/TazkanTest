@@ -5,6 +5,7 @@ namespace NabilahKishou.TazkanTest
 {
     public class ColorDrop : MonoBehaviour
     {
+        [SerializeField] private ColorDirectory _colors;
         [SerializeField] private float _timerToDrop = 3f;
 
         private SpriteRenderer _renderer;
@@ -43,9 +44,9 @@ namespace NabilahKishou.TazkanTest
             StartCoroutine(ActivateGravity(_timerToDrop));
         }
 
-        public void ChangeColor(Color to)
+        public void ChangeColor(Colorway to)
         {
-            _renderer.color = to;
+            _renderer.color = _colors.GetColor(to);
         }
     }
 }
