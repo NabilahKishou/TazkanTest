@@ -17,14 +17,6 @@ namespace NabilahKishou.TazkanTest
             SpawnStack();
         }
         
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.gameObject.TryGetComponent(out ColorDrop droplet))
-            {
-                CollectDroplet(droplet.DropletColor);
-            }
-        }
-
         private void SpawnStack()
         {
             for (int i = 0; i < _stackCapacity; i++)
@@ -45,12 +37,22 @@ namespace NabilahKishou.TazkanTest
                 bottPivot + (dropletHeight * order));
         }
 
-        private void CollectDroplet(Colorway color)
+        public void CollectDroplet(Colorway color)
         {
             if (_activeIndex >= _stackCapacity) return;
             _stacks[_activeIndex].ChangeColor(color);
             _stacks[_activeIndex].gameObject.SetActive(true);
             _activeIndex++;
+        }
+
+        public int[] GetStack()
+        {
+            int[] stack = new int[_activeIndex];
+            for (int i = 0; i < _activeIndex; i++)
+            {
+                stack[i] = (int)_stacks[i].Color;
+            }
+            return stack;
         }
     }
 }

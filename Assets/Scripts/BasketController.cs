@@ -1,3 +1,4 @@
+using EventBusSystem;
 using UnityEngine;
 
 namespace NabilahKishou.TazkanTest
@@ -5,6 +6,7 @@ namespace NabilahKishou.TazkanTest
     public class BasketController : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 3f;
+        [SerializeField] private BasketStack _stack;
 
         private Rigidbody2D _rb;
         private InputSystem _input;
@@ -25,6 +27,13 @@ namespace NabilahKishou.TazkanTest
         private void OnMove(float value)
         {
             _moveAxis = value;
+        }
+
+        public void EnterBasket(Colorway color)
+        {
+            _stack.CollectDroplet(color);
+            EventBus.Invoke(EventStringDirectory.CheckSequence_ArrInt,
+                new EventParameter<int[]> { value = _stack.GetStack() });
         }
     }
 }

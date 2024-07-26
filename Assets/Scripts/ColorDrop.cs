@@ -26,6 +26,11 @@ namespace NabilahKishou.TazkanTest
         {
             if (collision.gameObject.CompareTag("Ground"))
                 DeactivateDroplet();
+
+            if(collision.gameObject.TryGetComponent(out BasketController basket))
+            {
+                basket.EnterBasket(_colorway);
+            }
         }
 
         private void DeactivateDroplet()
@@ -44,6 +49,7 @@ namespace NabilahKishou.TazkanTest
         private void RandomizeColor()
         {
             _colorway = (Colorway)Random.Range(0, _colors.EnumLength());
+            //_colorway = (Colorway)0;
             _renderer.color = _colors.GetColor(_colorway);
         }
 
@@ -52,11 +58,6 @@ namespace NabilahKishou.TazkanTest
             RandomizeColor();
             _collider.isTrigger = true;
             StartCoroutine(ActivateGravity(_timerToDrop));
-        }
-
-        public void ChangeColor(Colorway to)
-        {
-            _renderer.color = _colors.GetColor(to);
         }
     }
 }

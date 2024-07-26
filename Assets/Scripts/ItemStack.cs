@@ -7,6 +7,9 @@ namespace NabilahKishou.TazkanTest
         [SerializeField] private ColorDirectory _colors;
 
         private SpriteRenderer _renderer;
+        private Colorway _way;
+
+        public Colorway Color => _way;
 
         private void Awake()
         {
@@ -15,7 +18,8 @@ namespace NabilahKishou.TazkanTest
 
         public void ChangeColor(Colorway to)
         {
-            _renderer.color = _colors.GetColor(to);
+            _way = to;
+            _renderer.color = _colors.GetColor(_way);
         }
     }
 }
