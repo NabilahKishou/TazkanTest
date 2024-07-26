@@ -49,6 +49,7 @@ namespace NabilahKishou.TazkanTest
             }
 
             Debug.Log("SEQUENCE MATCH!");
+            EventBus.Invoke(EventStringDirectory.SequenceMatch);
         }
     }
 }

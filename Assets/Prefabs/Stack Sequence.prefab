@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stack: {fileID: 5067549437110997799}
   _colors: {fileID: 11400000, guid: 474e87c1eee6c4842a428642ceb96d99, type: 2}
-  _sequence: 4
+  _sequence: 2
 --- !u!1 &5067549437110997817
 GameObject:
   m_ObjectHideFlags: 0

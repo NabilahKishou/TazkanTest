@@ -24,12 +24,15 @@ namespace NabilahKishou.TazkanTest
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Ground"))
-                DeactivateDroplet();
-
-            if(collision.gameObject.TryGetComponent(out BasketController basket))
+            if (collision.gameObject.TryGetComponent(out BasketController basket))
             {
+                DeactivateDroplet();
                 basket.EnterBasket(_colorway);
+            }
+            else if (collision.gameObject.TryGetComponent(out GroundController ground))
+            {
+                DeactivateDroplet();
+                ground.LiftPlatform();
             }
         }
 

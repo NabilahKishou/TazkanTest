@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.kyrylokuzyk.primetween": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",
     "com.nabilahkishou.eventbussystem": "https://github.com/NabilahKishou/Event-Bus-System.git",
     "com.nabilahkishou.objectpool": "https://github.com/NabilahKishou/Object-Pooling.git",
     "com.unity.2d.animation": "5.2.6",
