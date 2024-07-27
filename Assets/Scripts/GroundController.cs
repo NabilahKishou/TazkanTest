@@ -15,10 +15,6 @@ namespace NabilahKishou.TazkanTest
         private void Awake()
         {
             EventBus.Subscribe(EventStringDirectory.SequenceMatch, DropPlatform);
-        }
-
-        private void Start()
-        {
             _defaultPosition = new Vector2(transform.position.x, transform.position.y);
         }
 

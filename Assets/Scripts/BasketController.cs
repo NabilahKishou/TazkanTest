@@ -17,6 +17,7 @@ namespace NabilahKishou.TazkanTest
             _rb = GetComponent<Rigidbody2D>();
             _input = GetComponent<InputSystem>();
             _input.AddMoveListener(OnMove);
+            EventBus.Subscribe(EventStringDirectory.SequenceMatch, OnSequenceMatch);
         }
 
         private void FixedUpdate()
@@ -27,6 +28,11 @@ namespace NabilahKishou.TazkanTest
         private void OnMove(float value)
         {
             _moveAxis = value;
+        }
+
+        private void OnSequenceMatch()
+        {
+            _stack.ClearBasket();
         }
 
         public void EnterBasket(Colorway color)

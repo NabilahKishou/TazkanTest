@@ -1,16 +1,12 @@
-﻿using UnityEngine;
+﻿using EventBusSystem;
+using System.Collections;
+using UnityEngine;
 
 namespace NabilahKishou.TazkanTest
 {
     public class ColorSpawner : MonoBehaviour
     {
         [SerializeField] Transform _leftSide, _rightSide;
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-                SpawnColor();
-        }
 
         private void SpawnColor()
         {
@@ -36,5 +32,30 @@ namespace NabilahKishou.TazkanTest
 
             drop.position = spawn;
         }
+
+        private IEnumerator SpawnDroplets(int wave, int seqAmount)
+        {
+            int dropletsPerWave = seqAmount + wave;
+            float spawnIntervalMin = .5f;
+            float spawnIntervalMax = 3f;
+            for (int i = 0; i < dropletsPerWave; i++)
+            {
+                SpawnColor();
+                yield return new WaitForSeconds(Random.Range(spawnIntervalMin, spawnIntervalMax));
+            }
+        }
+
+        public IEnumerator SpawnWave(int wave, int seqAmount)
+        {
+            yield return SpawnDroplets(wave, seqAmount);
+            EventBus.Invoke(EventStringDirectory.WaveSpawned);
+        }
+    }
+
+    [System.Serializable]
+    public class Wave
+    {
+        public ColorDrop[] droplet;
+        public int count;
     }
 }

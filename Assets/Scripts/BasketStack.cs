@@ -45,14 +45,26 @@ namespace NabilahKishou.TazkanTest
 
         public void CollectDroplet(Colorway color)
         {
+            if (_activeIndex < 0) _activeIndex = 0;
             if (_activeIndex >= _stackCapacity) return;
             _stacks[_activeIndex].ChangeColor(color);
             _stacks[_activeIndex].gameObject.SetActive(true);
             _activeIndex++;
         }
 
+        public void ClearBasket()
+        {
+            if (_activeIndex < 0) return;
+            for (int i = 0; i < _activeIndex; i++)
+            {
+                _stacks[i].gameObject.SetActive(false);
+            }
+            _activeIndex = -1;
+        }
+
         public int[] GetStack()
         {
+            if (_activeIndex < 0) return default;
             int[] stack = new int[_activeIndex];
             for (int i = 0; i < _activeIndex; i++)
             {

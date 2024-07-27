@@ -18,12 +18,6 @@ namespace NabilahKishou.TazkanTest
                 (par) => CheckSequence(par.value));
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-                CreateSequence();
-        }
-
         private void CreateSequence()
         {
             for (int i = 0; i < _sequence; i++)
@@ -51,5 +45,8 @@ namespace NabilahKishou.TazkanTest
             Debug.Log("SEQUENCE MATCH!");
             EventBus.Invoke(EventStringDirectory.SequenceMatch);
         }
+
+        public void SetSequenceCapacity(int cap) => _sequence = cap;
+        public void SetStack() => CreateSequence();
     }
 }
