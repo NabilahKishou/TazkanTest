@@ -16,7 +16,13 @@ namespace NabilahKishou.TazkanTest
         {
             SpawnStack();
         }
-        
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Border"))
+                Debug.Log("Game Over!");
+        }
+
         private void SpawnStack()
         {
             for (int i = 0; i < _stackCapacity; i++)
