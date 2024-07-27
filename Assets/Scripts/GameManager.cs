@@ -23,8 +23,7 @@ namespace NabilahKishou.TazkanTest
         private IEnumerator Start()
         {
             yield return new WaitForSeconds(1f);
-            _stackSeq.SetSequenceCapacity(_sequenceCap);
-            _stackSeq.SetStack();
+            _stackSeq.RefreshSequence(_sequenceCap);
             StartCoroutine(Wave());
         }
 
@@ -32,8 +31,11 @@ namespace NabilahKishou.TazkanTest
         {
             _wave++;
             if (_wave % _waveToSequence == 0)
+            {
                 _sequenceCap++;
-            _stackSeq.SetStack();
+                EventBus.Invoke(EventStringDirectory.UpgradeStacker_Int, new EventParameter<int>(_sequenceCap));
+            }
+            _stackSeq.RefreshSequence(_sequenceCap);
         }
 
         private IEnumerator Wave()

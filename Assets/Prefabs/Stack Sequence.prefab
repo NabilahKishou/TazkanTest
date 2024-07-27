@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813e76779aeb5ef4e9f446b234f9602f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stack: {fileID: 5067549437110997799}
+  _stacker: {fileID: 7363585188941846992}
   _colors: {fileID: 11400000, guid: 474e87c1eee6c4842a428642ceb96d99, type: 2}
   _sequence: 2
 --- !u!1 &5067549437110997817
@@ -138,8 +138,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5067549437110997816}
-  - component: {fileID: 5067549437110997799}
   - component: {fileID: 5067549437110997798}
+  - component: {fileID: 7363585188941846992}
   m_Layer: 0
   m_Name: Stack
   m_TagString: Untagged
@@ -162,21 +162,6 @@ Transform:
   m_Father: {fileID: 5067549436781676112}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5067549437110997799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5067549437110997817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b97437765d2a575408f810fe1e964420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stackPrefab: {fileID: 3876464314958128019, guid: f1bff3c8ac095f74fb8cca2ae7ffdff3, type: 3}
-  _stackCapacity: 7
-  _bottomPoint: {fileID: 5067549436750984592}
 --- !u!212 &5067549437110997798
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -228,3 +213,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7363585188941846992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5067549437110997817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f50d299d01f2934aa7768c5d862990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stackPrefab: {fileID: 3876464314958128019, guid: f1bff3c8ac095f74fb8cca2ae7ffdff3, type: 3}
+  _defaultCap: 5
+  _bottomPoint: {fileID: 5067549436750984592}

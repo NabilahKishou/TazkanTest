@@ -6,7 +6,7 @@ namespace NabilahKishou.TazkanTest
     public class BasketController : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 3f;
-        [SerializeField] private BasketStack _stack;
+        [SerializeField] private ColorStacker _stacker;
 
         private Rigidbody2D _rb;
         private InputSystem _input;
@@ -32,14 +32,14 @@ namespace NabilahKishou.TazkanTest
 
         private void OnSequenceMatch()
         {
-            _stack.ClearBasket();
+            _stacker.ClearDroplet();
         }
 
         public void EnterBasket(Colorway color)
         {
-            _stack.CollectDroplet(color);
+            _stacker.InsertDroplet(color);
             EventBus.Invoke(EventStringDirectory.CheckSequence_ArrInt,
-                new EventParameter<int[]> { value = _stack.GetStack() });
+                new EventParameter<int[]> (_stacker.GetDropletOrder()));
         }
     }
 }

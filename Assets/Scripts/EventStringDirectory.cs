@@ -7,6 +7,7 @@
         public const string WaveSpawned = "wavespawned";
 
         //param
+        public const string UpgradeStacker_Int = "upgradestacker_int";
         public const string CheckSequence_ArrInt = "checksequence_arrint";
     }
 }

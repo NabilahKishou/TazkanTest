@@ -6,7 +6,7 @@ namespace NabilahKishou.TazkanTest
 {
     public class StackSequence : MonoBehaviour
     {
-        [SerializeField] private BasketStack _stack;
+        [SerializeField] private ColorStacker _stacker;
         [SerializeField] private ColorDirectory _colors;
         [SerializeField] private int _sequence = 4;
 
@@ -16,20 +16,6 @@ namespace NabilahKishou.TazkanTest
         {
             EventBus.Subscribe<EventParameter<int[]>>(EventStringDirectory.CheckSequence_ArrInt,
                 (par) => CheckSequence(par.value));
-        }
-
-        private void CreateSequence()
-        {
-            for (int i = 0; i < _sequence; i++)
-            {
-                int color = Random.Range(0, _colors.EnumLength());
-                //int color = 0;
-                _stack.CollectDroplet((Colorway)color);
-                if (i >= _colorSequence.Count)
-                    _colorSequence.Add(color);
-                else
-                    _colorSequence[i] = color;
-            }
         }
 
         private void CheckSequence(int[] basket)
@@ -46,7 +32,16 @@ namespace NabilahKishou.TazkanTest
             EventBus.Invoke(EventStringDirectory.SequenceMatch);
         }
 
-        public void SetSequenceCapacity(int cap) => _sequence = cap;
-        public void SetStack() => CreateSequence();
+        public void RefreshSequence(int capacity)
+        {
+            _colorSequence.Clear();
+            _stacker.ClearDroplet();
+            for (int i = 0; i < capacity; i++)
+            {
+                int color = Random.Range(0, _colors.EnumLength());
+                _colorSequence.Add(color);
+                _stacker.InsertDroplet((Colorway)color);
+            }
+        }
     }
 }
