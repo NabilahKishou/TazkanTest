@@ -8,6 +8,7 @@ namespace NabilahKishou.TazkanTest
     {
         [SerializeField] private ColorStacker _stacker;
         [SerializeField] private ColorDirectory _colors;
+        [SerializeField] private IntVariable _scoreRef;
 
         private List<int> _colorSequence = new List<int>();
 
@@ -27,7 +28,7 @@ namespace NabilahKishou.TazkanTest
                     return;
             }
             
-            EventBus.Invoke(EventStringDirectory.ScoreUpdate_int, new EventParameter<int>(_colorSequence.Count));
+            _scoreRef.ApplyChange(_colorSequence.Count);
             EventBus.Invoke(EventStringDirectory.SequenceMatch);
         }
 

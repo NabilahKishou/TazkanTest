@@ -6,22 +6,20 @@ namespace NabilahKishou.TazkanTest
 {
     public class ScoreSystem : MonoBehaviour
     {
+        [SerializeField] private IntVariable _scoreRef;
+
         private TMP_Text _scoreText;
-        private int _score = 0;
 
         private void Awake()
         {
             _scoreText = GetComponent<TMP_Text>();
-            EventBus.Subscribe<EventParameter<int>>(EventStringDirectory.ScoreUpdate_int, 
-                (p)=> OnScoreUpdate(p.value));
-
-            _scoreText.text = _score.ToString();
+            _scoreRef.AddListener(OnScoreUpdate);
+            _scoreRef.SetValue(0);
         }
 
-        private void OnScoreUpdate(int amount)
+        private void OnScoreUpdate()
         {
-            _score += amount;
-            _scoreText.text = _score.ToString();
+            _scoreText.text = _scoreRef.value.ToString();
         }
     }
 }

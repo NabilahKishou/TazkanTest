@@ -1,12 +1,14 @@
 using EventBusSystem;
+using System;
 using UnityEngine;
 
 namespace NabilahKishou.TazkanTest
 {
     public class BasketController : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed = 3f;
         [SerializeField] private ColorStacker _stacker;
+        [SerializeField] private IntVariable _scoreRef;
+        [SerializeField] private float _moveSpeed = 3f;
 
         private Rigidbody2D _rb;
         private InputSystem _input;
@@ -18,6 +20,7 @@ namespace NabilahKishou.TazkanTest
             _input = GetComponent<InputSystem>();
             _input.AddMoveListener(OnMove);
             EventBus.Subscribe(EventStringDirectory.SequenceMatch, OnSequenceMatch);
+            EventBus.Subscribe(EventStringDirectory.ClearBasket, OnClearButtonCalled);
         }
 
         private void FixedUpdate()
@@ -33,6 +36,13 @@ namespace NabilahKishou.TazkanTest
         private void OnSequenceMatch()
         {
             _stacker.ClearDroplet();
+        }
+
+        private void OnClearButtonCalled()
+        {
+            int dropletAmount = _stacker.GetDropletOrder().Length;
+            _stacker.ClearDroplet();
+            _scoreRef.ApplyChange(-dropletAmount);
         }
 
         public void EnterBasket(Colorway color)

@@ -1,4 +1,5 @@
 ﻿using EventBusSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,6 +68,7 @@ namespace NabilahKishou.TazkanTest
 
         public void InsertDroplet(Colorway color)
         {
+            if (_activeIndex + 1 >= _stacks.Count) return;
             _activeIndex++;
             _stacks[_activeIndex].ChangeColor(color);
             _stacks[_activeIndex].gameObject.SetActive(true);

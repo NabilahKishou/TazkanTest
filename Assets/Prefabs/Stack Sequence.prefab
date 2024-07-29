@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stacker: {fileID: 7363585188941846992}
   _colors: {fileID: 11400000, guid: 474e87c1eee6c4842a428642ceb96d99, type: 2}
-  _sequence: 2
+  _scoreRef: {fileID: 11400000, guid: 4f2c8834e1639e44f993481e8d350954, type: 2}
 --- !u!1 &5067549437110997817
 GameObject:
   m_ObjectHideFlags: 0
