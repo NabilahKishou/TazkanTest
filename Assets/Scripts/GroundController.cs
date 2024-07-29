@@ -25,6 +25,7 @@ namespace NabilahKishou.TazkanTest
 
         public void DropPlatform()
         {
+            if (transform.position.y == _defaultPosition.y) return;
             Tween.PositionY(transform, _defaultPosition.y, _dropDuration, Ease.Linear);
         }
     }

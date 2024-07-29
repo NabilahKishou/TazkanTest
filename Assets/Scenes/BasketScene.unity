@@ -1494,6 +1494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawner: {fileID: 1709215045}
   _stackSeq: {fileID: 958325945}
+  _scoreRef: {fileID: 11400000, guid: 4f2c8834e1639e44f993481e8d350954, type: 2}
 --- !u!4 &1875684292
 Transform:
   m_ObjectHideFlags: 0

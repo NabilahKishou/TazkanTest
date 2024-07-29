@@ -20,7 +20,7 @@ namespace NabilahKishou.TazkanTest
             _input = GetComponent<InputSystem>();
             _input.AddMoveListener(OnMove);
             EventBus.Subscribe(EventStringDirectory.SequenceMatch, OnSequenceMatch);
-            EventBus.Subscribe(EventStringDirectory.ClearBasket, OnClearButtonCalled);
+            EventBus.Subscribe(EventStringDirectory.ClearBasket, OnClearButtonCalled, EventListenerPriority.High);
         }
 
         private void FixedUpdate()
