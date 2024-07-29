@@ -13,7 +13,15 @@ namespace NabilahKishou.TazkanTest
         private void Awake()
         {
             _scoreText = GetComponent<TMP_Text>();
+
+            EventBus.Subscribe(EventStringDirectory.RestartGame, ResetScore);
+
             _scoreRef.AddListener(OnScoreUpdate);
+            _scoreRef.SetValue(0);
+        }
+
+        private void ResetScore()
+        {
             _scoreRef.SetValue(0);
         }
 

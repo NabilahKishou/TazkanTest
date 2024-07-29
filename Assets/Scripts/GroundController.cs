@@ -15,7 +15,14 @@ namespace NabilahKishou.TazkanTest
         private void Awake()
         {
             EventBus.Subscribe(EventStringDirectory.SequenceMatch, DropPlatform);
+            EventBus.Subscribe(EventStringDirectory.RestartGame, ResetPlatform);
+
             _defaultPosition = new Vector2(transform.position.x, transform.position.y);
+        }
+
+        private void ResetPlatform()
+        {
+            transform.position = _defaultPosition;
         }
 
         public void LiftPlatform()

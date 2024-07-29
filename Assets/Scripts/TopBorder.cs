@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using EventBusSystem;
+using UnityEngine;
 
 namespace NabilahKishou.TazkanTest
 {
@@ -8,7 +9,7 @@ namespace NabilahKishou.TazkanTest
         {
             if(collision.gameObject.TryGetComponent(out BasketController basket))
             {
-                Debug.Log("GAME OVER!");
+                EventBus.Invoke(EventStringDirectory.GameOver);
             }
         }
     }

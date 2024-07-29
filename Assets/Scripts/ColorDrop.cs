@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EventBusSystem;
+using System.Collections;
 using UnityEngine;
 
 namespace NabilahKishou.TazkanTest
@@ -20,6 +21,8 @@ namespace NabilahKishou.TazkanTest
             _renderer = GetComponent<SpriteRenderer>();
             _rb = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
+
+            EventBus.Subscribe(EventStringDirectory.RestartGame, DeactivateDroplet);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -38,6 +41,7 @@ namespace NabilahKishou.TazkanTest
 
         private void DeactivateDroplet()
         {
+            if (!gameObject.activeSelf) return;
             _rb.gravityScale = 0;
             _collider.isTrigger = false;
             ColorPooler.Return(this);

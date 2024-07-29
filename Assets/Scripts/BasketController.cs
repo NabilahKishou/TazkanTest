@@ -12,20 +12,32 @@ namespace NabilahKishou.TazkanTest
 
         private Rigidbody2D _rb;
         private InputSystem _input;
+        private Vector2 _initialPos;
         private float _moveAxis = 0f;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _input = GetComponent<InputSystem>();
-            _input.AddMoveListener(OnMove);
+
+            _initialPos = this.transform.position;
+
             EventBus.Subscribe(EventStringDirectory.SequenceMatch, OnSequenceMatch);
             EventBus.Subscribe(EventStringDirectory.ClearBasket, OnClearButtonCalled, EventListenerPriority.High);
+            EventBus.Subscribe(EventStringDirectory.RestartGame, ResetBasket);
+
+            _input.AddMoveListener(OnMove);
         }
 
         private void FixedUpdate()
         {
             _rb.velocity = new Vector2(_moveAxis * _moveSpeed, _rb.velocity.y);
+        }
+
+        private void ResetBasket()
+        {
+            _stacker.ClearDroplet();
+            transform.position = _initialPos;
         }
 
         private void OnMove(float value)
