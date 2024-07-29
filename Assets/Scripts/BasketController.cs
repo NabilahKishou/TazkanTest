@@ -39,7 +39,7 @@ namespace NabilahKishou.TazkanTest
         {
             _stacker.InsertDroplet(color);
             EventBus.Invoke(EventStringDirectory.CheckSequence_ArrInt,
-                new EventParameter<int[]> (_stacker.GetDropletOrder()));
+                new EventParameter<int[]>(_stacker.GetDropletOrder()));
         }
     }
 }
