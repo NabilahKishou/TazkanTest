@@ -14,6 +14,7 @@ namespace NabilahKishou.TazkanTest
         private InputSystem _input;
         private Vector2 _initialPos;
         private float _moveAxis = 0f;
+        private float _mouseXAxis = 0f;
 
         private void Awake()
         {
@@ -27,17 +28,25 @@ namespace NabilahKishou.TazkanTest
             EventBus.Subscribe(EventStringDirectory.RestartGame, ResetBasket);
 
             _input.AddMoveListener(OnMove);
+            _input.AddMouseMoveListener(OnMouseMove);
         }
 
         private void FixedUpdate()
         {
-            _rb.velocity = new Vector2(_moveAxis * _moveSpeed, _rb.velocity.y);
+            //_rb.velocity = new Vector2(_moveAxis * _moveSpeed, _rb.velocity.y);
+            transform.position = new Vector2(Mathf.Clamp(_mouseXAxis, -2.3f, 2.3f),
+                transform.position.y);
         }
 
         private void ResetBasket()
         {
             _stacker.ClearDroplet();
             transform.position = _initialPos;
+        }
+
+        private void OnMouseMove(Vector2 value)
+        {
+            _mouseXAxis = value.x;
         }
 
         private void OnMove(float value)
