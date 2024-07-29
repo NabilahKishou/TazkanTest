@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 818903895}
   - component: {fileID: 818903897}
   - component: {fileID: 818903896}
+  - component: {fileID: 818903898}
   m_Layer: 0
   m_Name: Top Border
   m_TagString: Border
@@ -528,6 +529,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &818903898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818903894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ade8476c3b8524ea051f608d44b75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &958325945 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8370487161613573399, guid: 2f858497e35dbf2449630b9a682d9200, type: 3}

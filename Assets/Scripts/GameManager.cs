@@ -10,7 +10,7 @@ namespace NabilahKishou.TazkanTest
         [SerializeField] private StackSequence _stackSeq;
 
         private float _waveInterval = 1f;
-        private int _wave = 1;
+        private int _wave = 0;
         private int _waveToSequence = 5;
         private int _sequenceCap = 1;
 
